@@ -11,44 +11,51 @@
     />
   </head>
   <body>
-    <h1>QR Code Generator</h1>
+    <main class="container">
+      <h1>QR Code Generator</h1>
 
-    <p>Enter a link below to create a QR code.</p>
+      <p class="intro">Enter a link below to create a QR code.</p>
 
-    <form action="/generate" method="POST">
-      <label for="website-url">Website URL:</label>
+      <form action="/generate" method="POST">
+        <label for="website-url">Website URL:</label>
 
-      <input
-        type="url"
-        id="website-url"
-        name="website-url"
-        placeholder="https://example.com"
-        value="{{ website_url or '' }}"
-        required
-      />
+        <input
+          type="url"
+          id="website-url"
+          name="website-url"
+          placeholder="https://example.com"
+          value="{{ website_url or '' }}"
+          required
+        />
 
-      <div>
-        <button type="submit">Generate QR Code</button>
+        <div class="button-row">
+          <button type="submit">Generate QR Code</button>
 
-        {% if qr_code %}
-        <a href="data:image/png;base64,{{ qr_code }}" download="qr-code.png">
-          Download QR Code
-        </a>
-        {% endif %}
-      </div>
-    </form>
+          {% if qr_code %}
+          <a
+            class="download-button"
+            href="data:image/png;base64,{{ qr_code }}"
+            download="qr-code.png"
+          >
+            Download QR Code
+          </a>
+          <a class="refresh-button" href="/"> Refresh QR Code </a>
+          {% endif %}
+        </div>
+      </form>
 
-    {% if qr_code %}
-    <section>
-      <h2>Your QR Code</h2>
+      {% if qr_code %}
+      <section class="result">
+        <h2>Your QR Code</h2>
 
-      <img
-        src="data:image/png;base64,{{ qr_code }}"
-        alt="QR code for {{ website_url }}"
-      />
+        <img
+          src="data:image/png;base64,{{ qr_code }}"
+          alt="QR code for {{ website_url }}"
+        />
 
-      <p>Created for: {{ website_url }}</p>
-    </section>
-    {% endif %}
+        <p>Created for: {{ website_url }}</p>
+      </section>
+      {% endif %}
+    </main>
   </body>
 </html>
