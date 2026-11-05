@@ -28,6 +28,10 @@
           required
         />
 
+        {% if error %}
+        <p class="error" role="alert">{{ error }}</p>
+        {% endif %}
+
         <div class="button-row">
           <button type="submit">Generate QR Code</button>
 

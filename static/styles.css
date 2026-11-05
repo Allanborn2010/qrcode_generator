@@ -119,6 +119,12 @@ button:hover {
   overflow-wrap: break-word;
 }
 
+.error {
+  margin-top: 10px;
+  color: #b42318;
+  font-size: 14px;
+}
+
 @media (max-width: 550px) {
   .container {
     padding: 25px 20px;
